@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>Thẻ mực điện tử - Điều khiển Bluetooth</title>
+    <link rel="stylesheet" href="template-studio.css?v=20260926-18">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Black+Ops+One&family=Bebas+Neue&family=Caveat:wght@600&family=Chakra+Petch:wght@400;700&family=Dancing+Script:wght@600&family=Exo+2:wght@400;700&family=Inter:wght@400;700&family=Lato:wght@400;700&family=Lobster&family=Merriweather:wght@400;700&family=Montserrat:wght@400;700&family=Nunito:wght@400;700&family=Open+Sans:wght@400;700&family=Orbitron:wght@400;700&family=Oswald:wght@400;700&family=Playfair+Display:wght@400;700&family=Poppins:wght@400;700&family=Press+Start+2P&family=Pacifico&family=Rajdhani:wght@400;700&family=Raleway:wght@400;700&family=Roboto:wght@400;700&family=Share+Tech+Mono&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@400;700&family=VT323&display=swap" rel="stylesheet">
     <style>
         /* Base style reset */
         * {
@@ -839,6 +843,182 @@
 
     <!-- dithering.js not in repo -->
     <!-- utils.js not in repo -->
+    <style>
+        /* Flat Vector UI layer: presentation only; behavior and IDs remain unchanged. */
+        :root {
+            --flat-ink: #172033;
+            --flat-muted: #667085;
+            --flat-blue: #082b55;
+            --flat-blue-dark: #051d3a;
+            --flat-red: #ef4444;
+            --flat-teal: #078b9b;
+            --flat-orange: #f36b16;
+            --flat-bg: #fff6d5;
+            --flat-surface: #fffdf2;
+            --flat-line: #d8ca92;
+            --flat-soft: #f7edc6;
+        }
+
+        html { background: var(--flat-bg); }
+        body {
+            max-width: 1480px;
+            margin: 0 auto;
+            padding: 24px clamp(14px, 3vw, 42px) 42px;
+            color: var(--flat-ink);
+            background: var(--flat-bg);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+            line-height: 1.5;
+        }
+        .language-toolbar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+            color: var(--flat-muted);
+            font-size: 12px;
+        }
+        .language-toolbar select { width: auto; min-width: 130px; }
+        .tabs-container { margin: 0 0 18px; }
+        .tab-buttons {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 8px;
+            padding: 7px;
+            border: 1px solid var(--flat-line);
+            border-radius: 16px;
+            background: #f4e9bc;
+            box-shadow: none;
+        }
+        .tab-button {
+            min-height: 46px;
+            padding: 10px 12px;
+            border: 0;
+            border-radius: 11px;
+            color: #596579;
+            background: transparent;
+            font-size: 13px;
+            font-weight: 750;
+            letter-spacing: .01em;
+        }
+        .tab-button:hover { color: var(--flat-ink); background: #fffdf2; transform: none; }
+        .tab-button.active { color: #fff; background: var(--flat-ink); border: 0; }
+        .tab-content {
+            padding: clamp(18px, 3vw, 32px);
+            border: 1px solid var(--flat-line);
+            border-radius: 20px;
+            background: var(--flat-surface);
+            box-shadow: 0 12px 30px rgba(30, 55, 100, .07);
+        }
+        .tab-content h2, .tab-content h3 { color: var(--flat-ink); letter-spacing: -.02em; }
+        .tab-content h2 { margin: 0 0 20px; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; }
+        .tab-content h3 { font-size: 18px; }
+        button {
+            min-height: 42px;
+            margin: 4px;
+            padding: 10px 15px;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            color: #fff;
+            background: var(--flat-blue);
+            box-shadow: none;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .01em;
+        }
+        button:hover { background: var(--flat-blue-dark); transform: translateY(-1px); }
+        button:active { transform: translateY(0); }
+        .button-group {
+            align-items: center;
+            gap: 8px;
+            margin: 12px 0;
+            padding: 12px;
+            border: 1px solid var(--flat-line);
+            border-radius: 14px;
+            background: #fbfcfe;
+        }
+        .button-group button { flex: 0 0 auto !important; width: auto !important; min-width: 0 !important; }
+        .button-group #connectbutton, .button-group #time-setter { background: var(--flat-teal); }
+        .button-group #connectbutton:hover, .button-group #time-setter:hover { background: #056d79; }
+        .sleep-actions button:first-child { background: var(--flat-orange); }
+        .sleep-actions button:first-child:hover { background: #d9560c; }
+        .sleep-disable-button { background: var(--flat-blue) !important; }
+        .tab-buttons { display: flex; flex-wrap: wrap; justify-content: flex-start; }
+        .tab-button { flex: 0 0 auto; min-width: 142px; }
+        .button-group > span { color: var(--flat-muted); font-size: 12px; font-weight: 650; }
+        input, select, textarea {
+            min-height: 42px;
+            border: 1px solid #d5ddea;
+            border-radius: 10px;
+            background: #fff;
+            color: var(--flat-ink);
+            font: inherit;
+        }
+        input:focus, select:focus, textarea:focus { outline: 3px solid rgba(49, 94, 251, .15); border-color: var(--flat-blue); }
+        label { color: #4d5b70; font-weight: 650; }
+        .sleep-panel, .date-picker-section, .main-content, .image-adjustments, .quick-editor-tools {
+            border: 1px solid var(--flat-line);
+            border-radius: 16px;
+            background: #fbfcfe;
+            box-shadow: none;
+        }
+        .sleep-panel { padding: 20px; }
+        .sleep-panel h3 { color: var(--flat-blue-dark); }
+        .sleep-status { border-color: var(--flat-line); background: #fff; }
+        .sleep-capability-note { border-color: #f3d38b; background: #fff8e7; }
+        .date-picker-section, .main-content { padding: 20px; }
+        .section-title { color: var(--flat-ink); font-weight: 800; }
+        .input-section { border-color: var(--flat-line); }
+        .preview-container { border: 1px solid var(--flat-line); border-radius: 14px; background: #f7edc6; }
+        .slider-container { border-color: var(--flat-line); background: #fff; }
+        .quick-editor-tools { padding: 12px; }
+        .quick-tool-button { min-width: 42px; background: #fff; color: var(--flat-ink); border: 1px solid var(--flat-line); }
+        .quick-tool-button:hover { background: #eef3ff; color: var(--flat-blue-dark); }
+        details { margin-top: 16px; padding: 12px 14px; border: 1px solid var(--flat-line); border-radius: 12px; background: #fbfcfe; }
+        summary { cursor: pointer; color: var(--flat-blue-dark); font-weight: 750; }
+        .template-studio-tab { background: var(--flat-bg); }
+        .studio-shell { background: var(--flat-bg); }
+        .studio-topbar { background: var(--flat-ink); border-radius: 16px 16px 0 0; }
+        .studio-brand-mark { border-radius: 10px; background: var(--flat-red); }
+        .studio-main { background: #f7edc6; }
+        .studio-canvas-stage { background: #f7edc6; }
+        .studio-toolbar { background: rgba(255,255,255,.96); border-bottom-color: var(--flat-line); }
+        .studio-tool-button { border-color: var(--flat-line) !important; border-radius: 9px !important; }
+        .studio-tool-button.active { background: var(--flat-ink) !important; }
+        .studio-sidebar, .studio-inspector { background: #fff; border-color: var(--flat-line); }
+        .studio-template-card, .studio-dynamic-choice, .studio-pixel-choice, .studio-layer { border-color: var(--flat-line) !important; border-radius: 10px !important; }
+        .studio-template-card.active { outline-color: var(--flat-blue); }
+        .studio-layer.active { border-color: var(--flat-blue) !important; box-shadow: inset 3px 0 var(--flat-blue); }
+        .studio-search, .studio-field input, .studio-field select, .studio-field textarea { border-color: #d5ddea; border-radius: 9px; }
+        .studio-data-note, .studio-empty { border-radius: 10px; background: #eef3fa; }
+        .studio-toast { border-radius: 10px; background: var(--flat-ink); }
+        @media (max-width: 900px) { .tab-buttons { grid-template-columns: repeat(2, 1fr); } .tab-button:last-child { grid-column: span 2; } }
+        @media (max-width: 560px) { body { padding: 12px 8px 24px; } .tab-buttons { grid-template-columns: 1fr; } .tab-button:last-child { grid-column: auto; } .tab-content { padding: 14px; border-radius: 15px; } }
+
+        /* Keep the primary navigation compact at every viewport size. The
+           legacy mobile rules above made each tab a full-width row. */
+        .tabs-container .tab-buttons {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            align-items: stretch !important;
+            justify-content: flex-start !important;
+            gap: 8px !important;
+            overflow-x: auto;
+        }
+        .tabs-container .tab-buttons .tab-button {
+            display: inline-flex !important;
+            flex: 0 0 auto !important;
+            width: auto !important;
+            min-width: 142px !important;
+            max-width: max-content !important;
+            margin: 0 !important;
+            white-space: nowrap !important;
+        }
+        @media (max-width: 560px) {
+            .tabs-container .tab-buttons .tab-button { min-width: 132px !important; }
+        }
+    </style>
 </head>
 
 <body>
@@ -1202,6 +1382,7 @@
             <button class="tab-button active" data-tab="tab-settings">E-Paper Settings</button>
             <button class="tab-button" data-tab="tab-countdown">Countdown Module</button>
             <button class="tab-button" data-tab="tab-image">Image Transfer</button>
+            <button id="template-studio-tab-button" class="tab-button" data-tab="tab-template-studio">Template Studio</button>
             <button id="clock-image-tab-button" class="tab-button" data-tab="tab-clock-image">Đồng hồ và ảnh</button>
         </div>
     </div>
@@ -1378,6 +1559,10 @@
     </div>
 
    
+    <div id="tab-template-studio" class="tab-content template-studio-tab">
+        <div id="template-studio-root"></div>
+    </div>
+
     <div id="tab-clock-image" class="tab-content">
         <h3 id="clock-image-title">Đồng hồ và ảnh</h3>
         <p id="clock-image-description">Kết nối màn tương thích để trang web tự chọn kích thước và vị trí ảnh.</p>
@@ -2466,6 +2651,8 @@ document.querySelectorAll('.tab-button').forEach(function(btn) {
         const NRF52_SERVICE_UUID = '62750001-d828-918d-fb46-b6c11c675aec';
         const NRF52_CHARACTERISTIC_UUID = '62750002-d828-918d-fb46-b6c11c675aec';
         const NRF52_APP_VERSION_UUID = '62750003-d828-918d-fb46-b6c11c675aec';
+        const BATTERY_SERVICE_UUID = 'battery_service';
+        const BATTERY_LEVEL_UUID = 'battery_level';
         const NRF52_CMD_SET_TIME = 0x20;
         const NRF52_CMD_SET_WEEK_START = 0x21;
         const NRF52_CMD_WRITE_IMAGE = 0x30;
@@ -2485,7 +2672,8 @@ document.querySelectorAll('.tab-button').forEach(function(btn) {
             NRF52_SERVICE_UUID,
             DA14585_RXTX_SERVICE_UUID,
             DA14585_LEGACY_SERVICE_UUID,
-            DA14585_DFU_SERVICE_UUID
+            DA14585_DFU_SERVICE_UUID,
+            BATTERY_SERVICE_UUID
         ];
         let deviceProtocol = null;
         let nrf52DisplayMode = 1;
@@ -2493,6 +2681,7 @@ document.querySelectorAll('.tab-button').forEach(function(btn) {
         let nrf52ModelDetected = false;
         let nrf52FirmwareVersion = 0;
         let nrf52PanelProfile = null;
+        let standardBatteryAvailable = false;
         let nrf52WeekStartConfirmed = null;
         let nrf52WeekStartLastSent = null;
         let nrf52WeekStartAckWaiter = null;
@@ -2526,6 +2715,7 @@ document.querySelectorAll('.tab-button').forEach(function(btn) {
             nrf52ModelDetected = false;
             nrf52FirmwareVersion = 0;
             nrf52PanelProfile = null;
+            standardBatteryAvailable = false;
             nrf52WeekStartConfirmed = null;
             nrf52WeekStartLastSent = null;
             if (nrf52WeekStartAckWaiter) {
@@ -4385,6 +4575,7 @@ document.querySelectorAll('.tab-button').forEach(function(btn) {
             const isConfig = data.length >= 8 && data.length <= 22 &&
                 [1, 2, 3, 4, 5, 7].includes(data[7]);
             if (isConfig) {
+                addLog(`> nRF52 raw config (${data.length} bytes): ${bytesToHex(data)}`);
                 nrf52ModelId = data[7];
                 nrf52ModelDetected = true;
                 nrf52PanelProfile = null;
@@ -4445,8 +4636,64 @@ document.querySelectorAll('.tab-button').forEach(function(btn) {
             await delay(80);
             await sendPendingWeekStartAfterDetection();
             await readSleepSchedule();
+            await readStandardBatteryLevel();
             addLog('> nRF52 connected; display initialized.');
         }
+        async function readStandardBatteryLevel() {
+            try {
+                const service = await gattServer.getPrimaryService(BATTERY_SERVICE_UUID);
+                const characteristic = await service.getCharacteristic(BATTERY_LEVEL_UUID);
+                standardBatteryAvailable = true;
+                const publish = value => {
+                    const percent = Math.max(0, Math.min(100, value.getUint8(0)));
+                    window.dispatchEvent(new CustomEvent('epd-battery-updated', { detail: { percent, source: 'device' } }));
+                    addLog(`> Pin thiết bị: ${percent}%`);
+                };
+                publish(await characteristic.readValue());
+                try {
+                    characteristic.addEventListener('characteristicvaluechanged', event => publish(event.target.value));
+                    await characteristic.startNotifications();
+                } catch (_) {
+                    // Reading once is still useful when notifications are unavailable.
+                }
+                return true;
+            } catch (_) {
+                standardBatteryAvailable = false;
+                addLog('> Firmware không cung cấp Battery Service; widget pin dùng giá trị nhập thủ công.');
+                return false;
+            }
+        }
+        async function reconnectKnownNrf52ForAutoSync() {
+            if (!bleDevice && navigator.bluetooth && typeof navigator.bluetooth.getDevices === 'function') {
+                const permittedDevices = await navigator.bluetooth.getDevices();
+                bleDevice = permittedDevices.find(device =>
+                    device.name === 'NRF_EPD_4FB6' || device.name?.startsWith('NRF_EPD_')) || null;
+                if (bleDevice) bleDevice.addEventListener('gattserverdisconnected', disconnect);
+            }
+            if (!bleDevice)
+                throw new Error('Chưa có thiết bị Bluetooth đã cấp quyền. Hãy bấm Quét thiết bị một lần.');
+            if (bleDevice.gatt.connected && deviceProtocol === PROTOCOL_NRF52 && epdCharacteristic)
+                return true;
+            resetVariables();
+            await connect();
+            if (deviceProtocol !== PROTOCOL_NRF52)
+                throw new Error('Thiết bị đã kết nối không phải nRF52.');
+            return true;
+        }
+        window.epdAutoSyncBridge = {
+            getState() {
+                return {
+                    connected: !!(bleDevice && bleDevice.gatt && bleDevice.gatt.connected),
+                    protocol: deviceProtocol,
+                    deviceName: bleDevice?.name || '',
+                    firmwareVersion: nrf52FirmwareVersion,
+                    modelId: nrf52ModelDetected ? nrf52ModelId : null,
+                    panelProfile: nrf52PanelProfile,
+                    batteryAvailable: standardBatteryAvailable
+                };
+            },
+            reconnect: reconnectKnownNrf52ForAutoSync
+        };
         async function reConnect() {
             if (bleDevice != null && bleDevice.gatt.connected) {
                 bleDevice.gatt.disconnect();
@@ -5869,5 +6116,8 @@ function toggleSwitch(e) {
 
 
 </script>
+    <!-- QR is optional and loads independently so Template Studio also starts from file:// or offline. -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js" async onload="document.dispatchEvent(new Event('qrcode-ready'))"></script>
+    <script src="template-studio.js?v=20260926-17" defer></script>
 </body>
 </html>
